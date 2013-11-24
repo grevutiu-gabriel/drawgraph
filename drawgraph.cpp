@@ -49,6 +49,7 @@ int main(int nNumberofArgs, char *pszArgs[]) {
   //printf("round of  %4.2lf is  %.2lf\n", rezultat, round(rezultat));
   //cout<<rezultat<<"\n";
   //if (yshow==round(rezultat)) image[yshow][xshow] = png::rgb_pixel(0, 255, 0);
+  if (round(xd*xd)>=image.get_height()) return(0); //limiteaza valoarea produsului xd*xd la valoarea inaltimii imaginii 
   if (yshow==round(xd*xd)) {image[yshow][xshow] = png::rgb_pixel(0, 255, 0); printf("valoarea xd este %.2lf; valoarea xd patrat este %.2lf; valoarea rotunjita xd patrat %.2lf; valoare yd %.2lf; egal\n", xd, rezultat, round(rezultat), round(yd));}
   else printf("valoarea xd este %.2lf; valoarea xd patrat este %.2lf; valoarea rotunjita xd patrat %.2lf; valoare yd %.2lf; diferit\n", xd, rezultat, round(rezultat), round(yd));
   
