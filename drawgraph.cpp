@@ -46,11 +46,12 @@ int main(int nNumberofArgs, char *pszArgs[]) {
   rezultat=xd*xd;
   printf("valoare xd este %.2lf\n", xd);
   printf("round of  %4.2lf is  %.2lf\n", rezultat, round(rezultat));
+  //std::cout<<rezultat<<"\n";
+  if (yshow==rezultat) image[yshow][xshow] = png::rgb_pixel(0, 255, 0);
     }
   
   
-  //std::cout<<rezultat<<"\n";
-  if (yshow==rezultat) image[yshow][xshow] = png::rgb_pixel(0, 255, 0);
+  
   }
  
  image.write(filename);
