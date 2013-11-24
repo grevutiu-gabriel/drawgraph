@@ -7,8 +7,6 @@
 
 using namespace std;
 
-
- 
 int main(int nNumberofArgs, char *pszArgs[]) {
   const char *filename;
   filename=pszArgs[1];
@@ -16,6 +14,7 @@ int main(int nNumberofArgs, char *pszArgs[]) {
   double xshow,yshow;
   double numarx, numary;
   double rezultat;
+  int xvar=0;
   
   png::image< png::rgb_pixel > image(filename);
   cout<<"inaltimea imagini: "<<image.get_height()<<"\n";
@@ -29,7 +28,8 @@ int main(int nNumberofArgs, char *pszArgs[]) {
 	yd=numary+y;
 	yshow=round(yd);
 	
-    for (size_t x = 0; x < image.get_width(); ++x) {
+	
+    for (size_t x = xvar; x < image.get_width(); ++x) {
 	numarx=0;
 	for (int i=0; i<10; ++i) {
 		numarx+=0.1;
@@ -48,7 +48,8 @@ int main(int nNumberofArgs, char *pszArgs[]) {
   //printf("valoarea xd este %.2lf; valoarea xd patrat este %.2lf; valoarea rotunjita xd patrat %.2lf; valoare yd %.2lf\n", xd, rezultat, round(yd));
   //printf("round of  %4.2lf is  %.2lf\n", rezultat, round(rezultat));
   //cout<<rezultat<<"\n";
-
+  
+  if (sqrt(yd)-1>xd) xvar=round(sqrt(yd))-1;
   if (sqrt(yd)<(xd-1)) break; //limiteaza valoarea produsului xd*xd la valoarea inaltimii imaginii 
   //if (sqrt(yd)<round(xd) || round(xd*xd)>=image.get_height()) break; //limiteaza valoarea produsului xd*xd la valoarea inaltimii imaginii
   //if (round(xd*xd)>=image.get_height()) break; //limiteaza valoarea produsului xd*xd la valoarea inaltimii imaginii 
