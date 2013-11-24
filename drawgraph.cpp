@@ -24,15 +24,15 @@ int main(int nNumberofArgs, char *pszArgs[]) {
     //for (size_t x = 0; x < image.get_width(); ++x) {
   for (size_t y = 0; y < image.get_height(); ++y) {
 	numary=0;	
-	for (int i=0;i<50;++i) {
-	numary+=0.02;
+	for (int i=0;i<10;++i) {
+	numary+=0.1;
 	yd=numary+y;
 	yshow=round(yd);
 	
     for (size_t x = 0; x < image.get_width(); ++x) {
 	numarx=0;
-	for (int i=0; i<50; ++i) {
-		numarx+=0.02;
+	for (int i=0; i<10; ++i) {
+		numarx+=0.1;
 		xd=numarx+x;
 		xshow=round(xd);
 		
@@ -48,9 +48,12 @@ int main(int nNumberofArgs, char *pszArgs[]) {
   //printf("valoarea xd este %.2lf; valoarea xd patrat este %.2lf; valoarea rotunjita xd patrat %.2lf; valoare yd %.2lf\n", xd, rezultat, round(yd));
   //printf("round of  %4.2lf is  %.2lf\n", rezultat, round(rezultat));
   //cout<<rezultat<<"\n";
-  if (yshow==round(rezultat)) image[yshow][xshow] = png::rgb_pixel(0, 255, 0);
-  //if (yshow==round(xd*xd)) {image[yshow][xshow] = png::rgb_pixel(0, 255, 0); cout<<"egal"<<"\n";}
-  //else cout<<"neegal"<<"\n";
+  //if (yshow==round(rezultat)) image[yshow][xshow] = png::rgb_pixel(0, 255, 0);
+  if (yshow==round(xd*xd)) {image[yshow][xshow] = png::rgb_pixel(0, 255, 0); printf("valoarea xd este %.2lf; valoarea xd patrat este %.2lf; valoarea rotunjita xd patrat %.2lf; valoare yd %.2lf; egal\n", xd, rezultat, round(rezultat), round(yd));}
+  else printf("valoarea xd este %.2lf; valoarea xd patrat este %.2lf; valoarea rotunjita xd patrat %.2lf; valoare yd %.2lf; diferit\n", xd, rezultat, round(rezultat), round(yd));
+  
+  /*if (yshow==round(xd*xd)) {image[yshow][xshow] = png::rgb_pixel(0, 255, 0); cout<<"egal"<<"\n";}
+  else cout<<"diferit"<<"\n";*/
 		}
     }
    }
