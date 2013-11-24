@@ -25,7 +25,7 @@ int main(int nNumberofArgs, char *pszArgs[]) {
 	for (int i=0;i<5;++i) {	
 	yd=numary+y;
 	yshow=round(yd);
-	}
+	
     for (size_t x = 0; x < image.get_width(); ++x) {
 	numarx=0;
 	for (int i=0; i<5; ++i) {
@@ -40,16 +40,18 @@ int main(int nNumberofArgs, char *pszArgs[]) {
   //if(((x*x*x-y)%60) <= 35) image[y][x] = png::rgb_pixel(0, numar, numar);
   //if(((x+y)%60) <= x+y) image[y][x] = png::rgb_pixel(0, 0, 0);
   //if (((x+y)%60) <= 35) image[y][x] = png::rgb_pixel(0, 255, 0);
-  //if (yshow==round(xd*xd)) {image[yshow][xshow] = png::rgb_pixel(0, 255, 0); std::cout<<"egal"<<"\n";}
+  
   
   //else std::cout<<"neegal"<<"\n";
   rezultat=xd*xd;
   printf("valoare xd este %.2lf\n", xd);
   printf("round of  %4.2lf is  %.2lf\n", rezultat, round(rezultat));
   //std::cout<<rezultat<<"\n";
-  if (yshow==rezultat) image[yshow][xshow] = png::rgb_pixel(0, 255, 0);
+  if (yshow==round(rezultat)) image[yshow][xshow] = png::rgb_pixel(0, 255, 0);
+  //if (yshow==round(xd*xd)) {image[yshow][xshow] = png::rgb_pixel(0, 255, 0); std::cout<<"egal"<<"\n";}
 		}
     }
+   }
     
   }
  
