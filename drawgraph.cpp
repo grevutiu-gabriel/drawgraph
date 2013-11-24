@@ -35,10 +35,10 @@ int main(int nNumberofArgs, char *pszArgs[]) {
 		
 		//std::cout<<"Valoare lui x este: "<<xshow<<" Valoare lui y este: "<<yshow<<"\n";
 		//std::cout<<"x : "<<xshow<<" y : "<<yshow<<"\n";
-		}
-  //numar+=1;
+
+		//numar+=1;
   //if(((x*x*x-y)%60) <= 35) image[y][x] = png::rgb_pixel(0, numar, numar);
-  if(((x+y)%60) <= x+y) image[y][x] = png::rgb_pixel(0, 0, 0);
+  //if(((x+y)%60) <= x+y) image[y][x] = png::rgb_pixel(0, 0, 0);
   //if (((x+y)%60) <= 35) image[y][x] = png::rgb_pixel(0, 255, 0);
   //if (yshow==round(xd*xd)) {image[yshow][xshow] = png::rgb_pixel(0, 255, 0); std::cout<<"egal"<<"\n";}
   
@@ -48,10 +48,9 @@ int main(int nNumberofArgs, char *pszArgs[]) {
   printf("round of  %4.2lf is  %.2lf\n", rezultat, round(rezultat));
   //std::cout<<rezultat<<"\n";
   if (yshow==rezultat) image[yshow][xshow] = png::rgb_pixel(0, 255, 0);
+		}
     }
-  
-  
-  
+    
   }
  
  image.write(filename);
