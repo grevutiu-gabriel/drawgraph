@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <math.h>
 
+using namespace std;
+
 
  
 int main(int nNumberofArgs, char *pszArgs[]) {
@@ -16,20 +18,21 @@ int main(int nNumberofArgs, char *pszArgs[]) {
   double rezultat;
   
   png::image< png::rgb_pixel > image(filename);
-  std::cout<<"inaltimea imagini: "<<image.get_height()<<"\n";
-  std::cout<<"lungimea imagini: "<<image.get_width()<<"\n";
+  cout<<"inaltimea imagini: "<<image.get_height()<<"\n";
+  cout<<"lungimea imagini: "<<image.get_width()<<"\n";
   //for (size_t y = 0; y < image.get_height(); ++y) {
     //for (size_t x = 0; x < image.get_width(); ++x) {
   for (size_t y = 0; y < image.get_height(); ++y) {
 	numary=0;	
-	for (int i=0;i<5;++i) {	
+	for (int i=0;i<50;++i) {
+	numary+=0.02;
 	yd=numary+y;
 	yshow=round(yd);
 	
     for (size_t x = 0; x < image.get_width(); ++x) {
 	numarx=0;
-	for (int i=0; i<5; ++i) {
-		numarx+=0.2;
+	for (int i=0; i<50; ++i) {
+		numarx+=0.02;
 		xd=numarx+x;
 		xshow=round(xd);
 		
@@ -41,14 +44,13 @@ int main(int nNumberofArgs, char *pszArgs[]) {
   //if(((x+y)%60) <= x+y) image[y][x] = png::rgb_pixel(0, 0, 0);
   //if (((x+y)%60) <= 35) image[y][x] = png::rgb_pixel(0, 255, 0);
   
-  
-  //else std::cout<<"neegal"<<"\n";
   rezultat=xd*xd;
-  printf("valoare xd este %.2lf\n", xd);
-  printf("round of  %4.2lf is  %.2lf\n", rezultat, round(rezultat));
-  //std::cout<<rezultat<<"\n";
+  //printf("valoarea xd este %.2lf; valoarea xd patrat este %.2lf; valoarea rotunjita xd patrat %.2lf; valoare yd %.2lf\n", xd, rezultat, round(yd));
+  //printf("round of  %4.2lf is  %.2lf\n", rezultat, round(rezultat));
+  //cout<<rezultat<<"\n";
   if (yshow==round(rezultat)) image[yshow][xshow] = png::rgb_pixel(0, 255, 0);
-  //if (yshow==round(xd*xd)) {image[yshow][xshow] = png::rgb_pixel(0, 255, 0); std::cout<<"egal"<<"\n";}
+  //if (yshow==round(xd*xd)) {image[yshow][xshow] = png::rgb_pixel(0, 255, 0); cout<<"egal"<<"\n";}
+  //else cout<<"neegal"<<"\n";
 		}
     }
    }
