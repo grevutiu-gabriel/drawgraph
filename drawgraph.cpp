@@ -31,8 +31,8 @@ int main(int nNumberofArgs, char *pszArgs[]) {
 	
     for (size_t x = xvar; x < image.get_width(); ++x) {
 	numarx=0;
-	for (int i=0; i<50; ++i) {
-		numarx+=0.02;
+	for (int i=0; i<100; ++i) {
+		numarx+=0.01;
 		xd=numarx+x;
 		xshow=round(xd);
 		
@@ -58,11 +58,11 @@ int main(int nNumberofArgs, char *pszArgs[]) {
   //if (rotunjit>image.get_height()) break; //limiteaza valoarea produsului xd*xd la valoarea inaltimii imaginii
   xplot=xshow;
   yplot=rotunjit;
-  //if (yplot < image.get_height()) image[yplot][xplot] = png::rgb_pixel(0, 255, 0);
-  //else break;
-  if (yplot < image.get_height())
-{image[yplot][xplot] = png::rgb_pixel(0, 255, 0); printf("valoarea xd este %.2lf; valoarea xd patrat este %.2lf; valoarea rotunjita xd patrat %.2lf; valoare yd %.2lf\n", xshow, rezultat, rotunjit, round(yd));}
+  if (yplot < image.get_height()) image[yplot][xplot] = png::rgb_pixel(0, 255, 0);
   else break;
+  //if (yplot < image.get_height())
+//{image[yplot][xplot] = png::rgb_pixel(0, 255, 0); printf("valoarea xd este %.2lf; valoarea xd patrat este %.2lf; valoarea rotunjita xd patrat %.2lf; valoare yd %.2lf\n", xshow, rezultat, rotunjit, round(yd));}
+ // else break;
  
  //if (yshow==rotunjit && yplot < image.get_height())
 //{image[yplot][xplot] = png::rgb_pixel(0, 255, 0); printf("valoarea xd este %.2lf; valoarea xd patrat este %.2lf; valoarea rotunjita xd patrat %.2lf; valoare yd %.2lf; egal\n", xshow, rezultat, rotunjit, round(yd));}
