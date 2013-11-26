@@ -13,7 +13,7 @@ int main(int nNumberofArgs, char *pszArgs[]) {
   double xd,yd;
   double xshow,yshow;
   double numarx, numary;
-  double rezultat;
+  double rezultat, rotunjit;
   int xvar=0;
   
   png::image< png::rgb_pixel > image(filename);
@@ -23,16 +23,16 @@ int main(int nNumberofArgs, char *pszArgs[]) {
     //for (size_t x = 0; x < image.get_width(); ++x) {
   for (size_t y = 0; y < image.get_height(); ++y) {
 	numary=0;	
-	for (int i=0;i<10;++i) {
-	numary+=0.1;
+	for (int i=0;i<50;++i) {
+	numary+=0.02;
 	yd=numary+y;
 	yshow=round(yd);
 	
 	
     for (size_t x = xvar; x < image.get_width(); ++x) {
 	numarx=0;
-	for (int i=0; i<10; ++i) {
-		numarx+=0.1;
+	for (int i=0; i<50; ++i) {
+		numarx+=0.02;
 		xd=numarx+x;
 		xshow=round(xd);
 		
@@ -45,17 +45,18 @@ int main(int nNumberofArgs, char *pszArgs[]) {
   //if (((x+y)%60) <= 35) image[y][x] = png::rgb_pixel(0, 255, 0);
   
   rezultat=xd*xd;
+  rotunjit=round(rezultat);
   //printf("valoarea xd este %.2lf; valoarea xd patrat este %.2lf; valoarea rotunjita xd patrat %.2lf; valoare yd %.2lf\n", xd, rezultat, round(yd));
   //printf("round of  %4.2lf is  %.2lf\n", rezultat, round(rezultat));
   //cout<<rezultat<<"\n";
   
   if (sqrt(yd)-1>xd) xvar=round(sqrt(yd))-1;
-  if (sqrt(yd)<(xd-1)) break; //limiteaza valoarea produsului xd*xd la valoarea inaltimii imaginii 
+  if (sqrt(yd)<(xd-1) || round(xd*xd)>image.get_height()+1) break; //limiteaza valoarea produsului xd*xd la valoarea inaltimii imaginii 
   //if (sqrt(yd)<round(xd) || round(xd*xd)>=image.get_height()) break; //limiteaza valoarea produsului xd*xd la valoarea inaltimii imaginii
   //if (round(xd*xd)>=image.get_height()) break; //limiteaza valoarea produsului xd*xd la valoarea inaltimii imaginii 
-  //if (yshow==round(rezultat)) image[yshow][xshow] = png::rgb_pixel(0, 255, 0);
-  if (yshow==round(xd*xd)) {image[yshow][xshow] = png::rgb_pixel(0, 255, 0); printf("valoarea xd este %.2lf; valoarea xd patrat este %.2lf; valoarea rotunjita xd patrat %.2lf; valoare yd %.2lf; egal\n", xd, rezultat, round(rezultat), round(yd));}
-  else printf("valoarea xd este %.2lf; valoarea xd patrat este %.2lf; valoarea rotunjita xd patrat %.2lf; valoare yd %.2lf; diferit\n", xd, rezultat, round(rezultat), round(yd));
+  //if (yshow==rotunjit) image[(unsigned long)yshow][(unsigned long)xshow] = png::rgb_pixel(0, 255, 0);
+  if (yshow==rotunjit && yshow < image.get_height()) {image[yshow][xshow] = png::rgb_pixel(0, 255, 0); printf("valoarea xd este %.2lf; valoarea xd patrat este %.2lf; valoarea rotunjita xd patrat %.2lf; valoare yd %.2lf; egal\n", xd, rezultat, rotunjit, round(yd));}
+  else printf("valoarea xd este %.2lf; valoarea xd patrat este %.2lf; valoarea rotunjita xd patrat %.2lf; valoare yd %.2lf; diferit\n", xd, rezultat, rotunjit, round(yd));
   
   /*if (yshow==round(xd*xd)) {image[yshow][xshow] = png::rgb_pixel(0, 255, 0); cout<<"egal"<<"\n";}
   else cout<<"diferit"<<"\n";*/
