@@ -11,7 +11,7 @@ int main(int nNumberofArgs, char *pszArgs[]) {
   const char *filename;
   filename=pszArgs[1];
   double xd,yd;
-  double xshow,yshow,xplot,yplot;
+  double xshow,yshow,xplot,yplot,xplotvertical,yplotvertical,xplotorizontal,yplotorizontal;
   double numarx, numary;
   double rezultat, rotunjit;
   int xvar=0;
@@ -56,10 +56,25 @@ int main(int nNumberofArgs, char *pszArgs[]) {
   //if (round(xd*xd)>=image.get_height()) break; //limiteaza valoarea produsului xd*xd la valoarea inaltimii imaginii 
   //if (yshow==rotunjit) image[(unsigned long)yshow][(unsigned long)xshow] = png::rgb_pixel(0, 255, 0);
   //if (rotunjit>image.get_height()) break; //limiteaza valoarea produsului xd*xd la valoarea inaltimii imaginii
-  xplot=xshow;
-  yplot=rotunjit;
-  if (yplot < image.get_height()) image[yplot][xplot] = png::rgb_pixel(0, 255, 0);
-  else break;
+  //xplotorizontal=(image.get_width()/2+xshow && image.get_width()/2-xshow);
+  xplotvertical=image.get_width()/2;//deseneaza linie orizontala
+  yplotvertical=rotunjit;
+  xplotorizontal=xshow;//deseneaza linie orizontala
+  yplotorizontal=image.get_height()/2;//deseneaza linie orizontala
+  
+ if (1)/*xshow < image.get_width()*/
+  {	
+	image[yplotorizontal][xplotorizontal] = png::rgb_pixel(0, 255, 0);
+  }	
+  else continue;
+
+  if (xshow < image.get_height()) 
+  {
+	image[xshow][xplotvertical] = png::rgb_pixel(0, 255, 0);
+  }
+  else continue;
+	//image[yplot][xplot] = png::rgb_pixel(0, 255, 0);
+ 
   //if (yplot < image.get_height())
 //{image[yplot][xplot] = png::rgb_pixel(0, 255, 0); printf("valoarea xd este %.2lf; valoarea xd patrat este %.2lf; valoarea rotunjita xd patrat %.2lf; valoare yd %.2lf\n", xshow, rezultat, rotunjit, round(yd));}
  // else break;
