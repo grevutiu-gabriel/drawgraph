@@ -10,11 +10,11 @@ using namespace std;
 int main(int nNumberofArgs, char *pszArgs[]) {
   const char *filename;
   filename=pszArgs[1];
-  double xd,yd;
+  double xd,yd,valorinegative, valoripozitive;
   double xshow,yshow,xplot,yplot,xplotvertical,yplotvertical,xplotorizontal,yplotorizontal;
   double numarx, numary;
-  double rezultat, rotunjit;
-  int xvar=0;
+  double rezultat, rotunjit, rotunjitnegativ, rotunjitpozitiv;
+  int xvar=0,  valoarefatadereferinta, rezultatnegativ, rezultatpozitiv;
   
   png::image< png::rgb_pixel > image(filename);
   cout<<"inaltimea imagini: "<<image.get_height()<<"\n";
@@ -35,9 +35,15 @@ int main(int nNumberofArgs, char *pszArgs[]) {
 		numarx+=0.01;
 		xd=numarx+x;
 		xshow=round(xd);
+		//if (xshow<image.get_width()/2) {valorinegative=image.get_width()/2-xshow;cout<<"Valoarea negativa este: "<<valorinegative<<endl;}
+		//if (xshow>image.get_width()/2) {valoripozitive=image.get_width()/2+xshow;cout<<"Valoarea pozitiva este: "<<valoripozitive<<endl;}
+		valorinegative=image.get_width()/2-xd;
+		valoripozitive=image.get_width()/2+xd;
+
+		//valoarefatadereferinta=xshow-image.get_width()/2;
 		
-		//std::cout<<"Valoare lui x este: "<<xshow<<" Valoare lui y este: "<<yshow<<"\n";
-		//std::cout<<"x : "<<xshow<<" y : "<<yshow<<"\n";
+		//cout<<"Valoare lui x este: "<<xshow<<" Valoare lui y este: "<<yshow<<"\n";
+		//cout<<"x : "<<xshow<<" y : "<<yshow<<"\n";
 
 		//numar+=1;
   //if(((x*x*x-y)%60) <= 35) image[y][x] = png::rgb_pixel(0, numar, numar);
@@ -46,6 +52,10 @@ int main(int nNumberofArgs, char *pszArgs[]) {
   
   rezultat=xd*xd;
   rotunjit=round(rezultat);
+  rezultatnegativ=xd*xd;
+  rezultatpozitiv=xd*xd;
+  rotunjitnegativ=round(rezultatnegativ)+image.get_height()/2;
+  rotunjitpozitiv=round(rezultatpozitiv)+image.get_height()/2;
   //printf("valoarea xd este %.2lf; valoarea xd patrat este %.2lf; valoarea rotunjita xd patrat %.2lf; valoare yd %.2lf\n", xd, rezultat, round(yd));
   //printf("round of  %4.2lf is  %.2lf\n", rezultat, round(rezultat));
   //cout<<rezultat<<"\n";
@@ -64,13 +74,15 @@ int main(int nNumberofArgs, char *pszArgs[]) {
   
  if (1)/*xshow < image.get_width()*/
   {	
-	image[yplotorizontal][xplotorizontal] = png::rgb_pixel(0, 255, 0);
+	image[yplotorizontal][xplotorizontal] = png::rgb_pixel(255, 255, 255);
+	if (rotunjitnegativ < 768) image[rotunjitnegativ][(int)valorinegative]=png::rgb_pixel(255, 0, 0);
+	if (rotunjitpozitiv < 768) image[rotunjitpozitiv][(int)valoripozitive]=png::rgb_pixel(255, 0, 0);
   }	
   else continue;
 
   if (xshow < image.get_height()) 
   {
-	image[xshow][xplotvertical] = png::rgb_pixel(0, 255, 0);
+	image[xshow][xplotvertical] = png::rgb_pixel(255, 255, 255);
   }
   else continue;
 	//image[yplot][xplot] = png::rgb_pixel(0, 255, 0);
