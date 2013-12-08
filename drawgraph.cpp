@@ -54,8 +54,8 @@ int main(int nNumberofArgs, char *pszArgs[]) {
   rotunjit=round(rezultat);
   rezultatnegativ=xd*xd;
   rezultatpozitiv=xd*xd;
-  rotunjitnegativ=round(rezultatnegativ)+image.get_height()/2;
-  rotunjitpozitiv=round(rezultatpozitiv)+image.get_height()/2;
+  rotunjitnegativ=767-round(rezultatnegativ)-image.get_height()/2;
+  rotunjitpozitiv=767-round(rezultatpozitiv)-image.get_height()/2;
   //printf("valoarea xd este %.2lf; valoarea xd patrat este %.2lf; valoarea rotunjita xd patrat %.2lf; valoare yd %.2lf\n", xd, rezultat, round(yd));
   //printf("round of  %4.2lf is  %.2lf\n", rezultat, round(rezultat));
   //cout<<rezultat<<"\n";
@@ -75,8 +75,8 @@ int main(int nNumberofArgs, char *pszArgs[]) {
  if (1)/*xshow < image.get_width()*/
   {	
 	image[yplotorizontal][xplotorizontal] = png::rgb_pixel(255, 255, 255);
-	if (rotunjitnegativ < 768) image[rotunjitnegativ][(int)valorinegative]=png::rgb_pixel(255, 0, 0);
-	if (rotunjitpozitiv < 768) image[rotunjitpozitiv][(int)valoripozitive]=png::rgb_pixel(255, 0, 0);
+	if (rotunjitnegativ < 768 && rotunjitnegativ>=0) image[rotunjitnegativ][(int)valorinegative]=png::rgb_pixel(255, 0, 0);
+	if (rotunjitpozitiv < 768 && rotunjitnegativ>=0) image[rotunjitpozitiv][(int)valoripozitive]=png::rgb_pixel(255, 0, 0);
   }	
   else continue;
 
